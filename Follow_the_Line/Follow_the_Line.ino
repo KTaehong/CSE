@@ -10,7 +10,7 @@ const byte ledPin = 13;
 
 
 uint8_t speed = 100;
-double lineDirIndex=10;
+
 
 
 void setup() {
@@ -38,21 +38,12 @@ void lineFollow(){
   {
     case S1_IN_S2_IN:
       moveForward();
-      lineDirIndex=10;
       break;
     case S1_IN_S2_OUT:
       TurnLeft();
-
-
-      if(lineDirIndex>1) {
-        lineDirIndex--;
-      }      
       break;
     case S1_OUT_S2_IN:
       TurnRight();
-      if(lineDirIndex<20) {
-        lineDirIndex++;
-      }    
       break;
     case S1_OUT_S2_OUT:
       if (30000 >= (currentMillis - startMillis)){
@@ -64,8 +55,8 @@ void lineFollow(){
         motor2.run(-90);
       }
       else if (180000 >= (currentMillis - startMillis)){
-        motor1.run(80);
-        motor2.run(-150);
+        motor1.run(-100);
+        motor2.run(-100);
       }
       else if (180000 < (currentMillis - startMillis)){
         motor1.stop();
