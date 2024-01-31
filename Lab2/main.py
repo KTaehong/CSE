@@ -2,14 +2,14 @@ x = input("Enter color 1: ")
 y = input("Enter color 2: ")
 if x.lower() == 'red':
     if y.lower() == 'blue':
-        print("purle")
+        print("purple")
     elif y.lower() == 'yellow':
         print("orange")
     else:
         print("Error")
 elif x.lower() == 'blue':
     if y.lower() == 'red':
-        print("purle")
+        print("purple")
     elif y.lower() == 'yellow':
         print("green")
     else:
