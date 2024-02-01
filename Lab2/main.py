@@ -1,23 +1,23 @@
 x = input("Enter color 1: ")
 y = input("Enter color 2: ")
-if x == 'red':
-    if y == 'blue':
-        print("purle")
-    elif y == 'yellow':
+if x.lower() == 'red':
+    if y.lower() == 'blue':
+        print("purple")
+    elif y.lower() == 'yellow':
         print("orange")
     else:
         print("Error")
-elif x == 'blue':
-    if y == 'red':
-        print("purle")
-    elif y == 'yellow':
+elif x.lower() == 'blue':
+    if y.lower() == 'red':
+        print("purple")
+    elif y.lower() == 'yellow':
         print("green")
     else:
         print("Error")
-elif x == 'yellow':
-    if y == 'red':
+elif x.lower() == 'yellow':
+    if y.lower() == 'red':
         print("orange")
-    elif y == 'blue':
+    elif y.lower() == 'blue':
         print("green")
     else:
         print("Error")
