@@ -15,8 +15,13 @@ def calc_average(a,b,c,d,e):
 
 
 a=int(input("Input test score: "))
+determine_grade(a)
 b=int(input("Input test score: "))
+determine_grade(b)
 c=int(input("Input test score: "))
+determine_grade(c)
 d=int(input("Input test score: "))
+determine_grade(d)
 e=int(input("Input test score: "))
+determine_grade(e)
 determine_grade(calc_average(a,b,c,d,e))
