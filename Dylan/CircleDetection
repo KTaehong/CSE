@@ -1,0 +1,38 @@
+# import packages
+import numpy as np
+import cv2
+import time
+cap=cv2.VideoCapture('Dylan.mp4')
+radius = 135
+counter = 0
+while(True):
+	#Make a copy of original image
+	ret,frame = cap.read()
+	#Apply all necessary filters (grayscale, gaussian blur, median blur, gaussian
+	threshold, erode, and dilate)
+	counter +=1
+	if counter % 3 == 0:
+		gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+		gray = cv2.GaussianBlur(gray,(7,7),0)
+		gray = cv2.medianBlur(gray,3)
+		gray = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,3.5)
+		#Use houghcircles to locate circles
+		circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 140,param1=130, param2=120, minRadius=5, maxRadius=200)
+		#If circles exist
+		if circles is not None:
+			# convert the coordinates and radius of the circles tointegers
+			circles = np.round(circles[0, :]).astype("int")
+			# loop over the coordinates and radius of the circles
+			for (x, y, r) in circles:
+				if radius < r or r < radius -10:
+					r = radius
+				cv2.circle(frame, (x, y), r, (0, 255, 0), 4)
+				cv2.rectangle(frame, (x - 5, y - 5), (x + 5, y + 5),(0, 128, 255), -1)
+				cv2.circle(gray,(x,y),r,(0,255,0),4)
+				cv2.rectangle(gray,(x-5,y-5),(x+5,y+5),(0,255,0),-1)
+		cv2.imshow('frame',gray)
+		cv2.imshow('gray',frame)
+	if cv2.waitKey(1) & 0xFF == ord('q'):
+		break
+cap.release()
+cv2.destroyAllWindows()
